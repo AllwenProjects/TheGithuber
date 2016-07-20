@@ -7,16 +7,16 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-bot = telebot.TeleBot('YOUR TOKEN') # makan token shoma
+bot = telebot.TeleBot('243509558:AAFkbeR5abgOlWLuT-Tjf1e3v4dt8jFCFOQ243509558:AAFkbeR5abgOlWLuT-Tjf1e3v4dt8jFCFOQ') 
 
 @bot.message_handler(commands=['start', 'help'])
 def m(m):
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton('Inline Mode', switch_inline_query='taylor-team'))
-    bot.send_message(m.chat.id, 'Hi Welcome Github bot\ncommands : \n/git [username]\n\ncreated By Taylor Team \ndeveloper : @negative_officiall', reply_markup=markup)
+    markup.add(types.InlineKeyboardButton('| Inline Mode |', switch_inline_query='MrPythons'))
+    bot.send_message(m.chat.id, '<b>Welcome To Githubber!</b>\nIm Searching Github Bot\nYou Can Search Username By /gituser [UserName]\nCreated By MrPython', reply_markup=markup)
     print 'bot send help command'
 
-@bot.message_handler(regexp='^(/git) (.*)')
+@bot.message_handler(regexp='^(/gituser) (.*)')
 def gif(m):
     text = m.text.split()[1]
     r = requests.get('https://api.github.com/users/{}'.format(text))
@@ -38,7 +38,7 @@ def gif(m):
         bot.send_message(m.chat.id, 'Name : <b>{}</b>\nType : <b>{}</b>\nCompany : <b>{}</b>\nblog : <code>{}</code>\nlocation : <b>{}</b>\nbio : <i>{}</i>\n\nUrl : <code>{}</code>\nfollowers : <code>{}</code>\nfollowing : <code>{}</code>\nRepos : <code>{}</code>\n\xE2\x97\xBC \xE2\x97\xBB \xE2\x97\xBC \xE2\x97\xBB \xE2\x97\xBC \xE2\x97\xBB \xE2\x97\xBC \n@taylor_team'.format(name,typee,company,blog,location,bio,url_html,followers,following,public_repos), parse_mode='HTML')
         print 'bot send git command'
     if 'message' in json_data:
-        bot.send_message(m.chat.id, 'Error \n/git [username]')
+        bot.send_message(m.chat.id, '#Error\n/gituser [UserName]')
         return
 
 @bot.inline_handler(lambda query: len(query.query.split()) == 1)
@@ -59,15 +59,9 @@ def qq(q):
         following = json_data['following']
         avatar_url = json_data['avatar_url']
         tmp = 'http://ericsteinborn.com/github-for-cats/img/ironcat.png'
-        gitss = types.InlineQueryResultArticle('1', 'Git username\xE2\x9C\x8F\xEF\xB8\x8F', types.InputTextMessageContent('Name : <b>{}</b>\nUrl : <b>{}</b>\nBlog : <b>{}</b>\nLocation : <b>{}</b>\nBio : <i>{}</i>\n\nRepos : <code>{}</code>\nfollowers : <code>{}</code>\nfollowing : <code>{}</code>'.format(name,url_html,blog,location,bio,public_repos,followers,following), parse_mode="HTML"), thumb_url=tmp)
-        avatarr = types.InlineQueryResultPhoto('2', '{}'.format(avatar_url), '{}'.format(avatar_url), description='avatar', caption='Name : {}\nUrl : {}\nBlog : {}\nLocation : {}\nBio : {}\n\nRepos : {}'.format(name,url_html,blog,location,bio,public_repos))
+        gitss = types.InlineQueryResultArticle('1', 'Username \xE2\x9C\x8F\xEF\xB8\x8F', types.InputTextMessageContent('Name : <b>{}</b>\nUrl : <b>{}</b>\nBlog : <b>{}</b>\nLocation : <b>{}</b>\nBio : <i>{}</i>\n\nRepos : <code>{}</code>\nFollowers : <code>{}</code>\nFollowing : <code>{}</code>\n@GithubberBot'.format(name,url_html,blog,location,bio,public_repos,followers,following), parse_mode="HTML"), thumb_url=tmp)
+        avatarr = types.InlineQueryResultPhoto('2', '{}'.format(avatar_url), '{}'.format(avatar_url), description='avatar', caption='Name : {}\nUrl : {}\nBlog : {}\nLocation : {}\nBio : {}\n\nRepos : {}\n@GithubberBot'.format(name,url_html,blog,location,bio,public_repos))
         bot.answer_inline_query(q.id, [gitss, avatarr], cache_time=1)
 
 bot.polling(True)
-# _____           _              _____
-#|_   _|_ _ _   _| | ___  _ __  |_   _|__  __ _ _ __ ___
-#  | |/ _` | | | | |/ _ \| '__|   | |/ _ \/ _` | '_ ` _ \
-#  | | (_| | |_| | | (_) | |      | |  __/ (_| | | | | | |
-#  |_|\__,_|\__, |_|\___/|_|      |_|\___|\__,_|_| |_| |_|
-#           |___/
-#Copy right  2016 Negative - Taylor Team
+
