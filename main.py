@@ -13,7 +13,7 @@ bot = telebot.TeleBot('243509558:AAH4Hdsv4Sm5g0t0gNnbLbcLGn0chnoFbrA')
 def m(m):
     markup = types.InlineKeyboardMarkup()
     markup.add(types.InlineKeyboardButton('| Inline Mode |', switch_inline_query='MrPythons'))
-    bot.send_message(m.chat.id, '<b>Welcome To Githubber!</b>\nIm Searching Github Bot\nYou Can Search Username By /gituser [UserName]\nCreated By MrPython', reply_markup=markup)
+    bot.send_message(m.chat.id, 'Welcome To Githubber!\nIm Searching Github Bot\nYou Can Search Username By /gituser [UserName]\nCreated By MrPython', reply_markup=markup)
     print 'bot send help command'
 
 @bot.message_handler(regexp='^(/gituser) (.*)')
@@ -35,7 +35,7 @@ def gif(m):
         avatar_url = json_data['avatar_url']
         urllib.urlretrieve("{}".format(avatar_url), "git.png")
         bot.send_sticker(m.chat.id, open('git.png'))
-        bot.send_message(m.chat.id, 'Name : <b>{}</b>\nType : <b>{}</b>\nCompany : <b>{}</b>\nblog : <code>{}</code>\nlocation : <b>{}</b>\nbio : <i>{}</i>\n\nUrl : <code>{}</code>\nfollowers : <code>{}</code>\nfollowing : <code>{}</code>\nRepos : <code>{}</code>\n\xE2\x97\xBC \xE2\x97\xBB \xE2\x97\xBC \xE2\x97\xBB \xE2\x97\xBC \xE2\x97\xBB \xE2\x97\xBC \n@taylor_team'.format(name,typee,company,blog,location,bio,url_html,followers,following,public_repos), parse_mode='HTML')
+        bot.send_message(m.chat.id, 'Name : <b>{}</b>\nType : <b>{}</b>\nCompany : <b>{}</b>\nBlog : <code>{}</code>\nLocation : <b>{}</b>\nBio : <i>{}</i>\n\nUrl : <code>{}</code>\nFollowers : <code>{}</code>\nFollowing : <code>{}</code>\nRepos : <code>{}</code>\nCreated By @MrPython'.format(name,typee,company,blog,location,bio,url_html,followers,following,public_repos), parse_mode='HTML')
         print 'bot send git command'
     if 'message' in json_data:
         bot.send_message(m.chat.id, '#Error\n/gituser [UserName]')
